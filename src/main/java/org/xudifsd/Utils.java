@@ -34,10 +34,13 @@ public class Utils {
 	}
 	public static String getIfNotNull(Map<String, String> map, String key, String defaultValue) {
 		String result = map.get(key);
-		if (result == null)
+		if (result == null) {
+			System.err.println("info: " + key + " is not in config, using " + defaultValue);
 			return defaultValue;
-		else
+		} else {
+			System.err.println("info: setting " + key + " to be " + result);
 			return result;
+		}
 	}
 
 	public static Channel getChannel(String host, int port, String username, String password) throws IOException {
